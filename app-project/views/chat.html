@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="angularjsNodejsTutorial">
+    <head>
+        <title>Integrating AngularJS with NodeJS</title>
+        <link href="../stylesheets/bootstrap.min.css" rel="stylesheet">
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+        <script src="../javascripts/bootstrap.min.js" type="text/javascript"></script> 
+        <script src="../javascripts/app.js" type="text/javascript"></script>
+    </head>
+    <body>
+       <div ng-controller="chatController">
+          <div class="list-group" ng-repeat="chats in chat">
+              <li class="list-group-item"><b>{{chats.name}}<b> : {{chats.message}} <i>{{chats.createdOn}}</i></li>
+          </div>
+
+
+            <form>
+              <div class="form-group row">
+                <label for="lgFormGroupInput" class="col-sm-2 col-form-label col-form-label-lg">Chat</label>
+                <div class="col-sm-10">
+                  <input type="text" name="message" class="form-control form-control-lg" id="message" placeholder="Bob">
+                  <input type="hidden" name="reciever" class="form-control form-control-lg" ng-model="reciever" id="reciever" value="<%=reciever_id %>">
+                  <input type="hidden" name="sender" class="form-control form-control-lg" id="sender" value="<%=sender_id %>">
+                  <button type="button" ng-click="sendMsg()" class="btn btn-primary">Send</button>
+                </div>
+              </div>
+            </form>
+        </div>
+    </body>
+</html>
