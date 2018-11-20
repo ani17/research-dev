@@ -1,0 +1,10 @@
+<div>
+	<ul>
+		<li ng-repeat="alarms in alarmList">
+			<div ng-click="editThis($index)">
+				{{alarms.selectedHr}} : {{alarms.selectedMin}} {{alarms.selectedAMPM}}
+				{{alarms.selectedDays}}
+			<div>
+		</li>
+	</ul>
+</div>
