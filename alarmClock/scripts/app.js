@@ -205,6 +205,7 @@ controllers.addAlarmController = function ($rootScope,$scope,filterFilter,$state
 			'snooze' : $scope.snoozeEnable,
 			'selectedDays': $scope.daysSelected, 
 			'selectedType': $scope.alarmTypeSelected, 
+			'enabled': true, 
 		};
 
 		if(localStorage.getItem('alarmList'))

@@ -1,25 +1,57 @@
-<div>
-	<select ng-model="hrSelected" ng-options="x for x in hour"></select>
-	<select ng-model="minSelected" ng-options="x for x in min"></select>
-	<select ng-model="amPMSelected" ng-options="x for x in amPM"></select>
+<div class="card">
+  <div class="card-header row">
+  	<div class="col">
+      <a href="#" class="card-link text-left">Cancel</a>
+    </div>
+    <div class="col">
+      <p class="card-text text-center">Alarm/Edit</p>
+    </div>
+    <div class="col">
+      <a href="#" class="card-link text-right">Save</a>
+    </div>
+  </div>
+  <div class="card-body">
+  	<div class="card-body bg-light">
+  		SELECT TIME
+  	</div>
+    <div class="form-group row">
+		<select class="form-control-sm" ng-model="hrSelected" ng-options="x for x in hour"></select>
+		<select class="form-control-sm" ng-model="minSelected" ng-options="x for x in min"></select>
+		<select class="form-control-sm" ng-model="amPMSelected" ng-options="x for x in amPM"></select>
+	</div>
+
+	<div class="form-check">
+		<label for="Snooze" class="col-sm-2 col-form-label">Snooze:</label>
+		<input type="checkbox" ng-model="snoozeEnable">
+	</div>
+	<div class="form-group row">
+		<label for="Label" class="col-sm-2 col-form-label">Label: </label>
+		<input class="form-control-sm type="text" name="alarmLabel" ng-model="alarmLabel" value="{{alarmLabel}}">
+	</div>
+	<div class="card-body bg-light">
+  		REPEAT
+  	</div>
+	<div>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="day in weekdays">
+				<label for="Label" class="col-sm-2 col-form-label">{{day.name}}</label>
+				<input type="checkbox" name="selectedDays[]" ng-model="day.selected" value="{{day.name}}">
+			</li>
+		</ul>
+	</div>
+	<div class="card-body bg-light">
+  		SOUND
+  	</div>
+	<div>
+		<ul class="list-group">
+			<li class="list-group-item" ng-repeat="type in alarmTypes">
+				{{type.name}}<input type="radio" name="alarmTypeSelected" ng-model="$parent.alarmTypeSelected" value="{{type.name}}" >
+			</li>
+		</ul>
+	</div>
+	<div class="card-body bg-light">
+		<button class="btn btn-outline-primary btn-block" ng-click="saveAlarm()">Save Alarm</button>
+		<button class="btn btn-outline-danger btn-block" ng-click="deleteAlarm()" ng-if="editFlag">Delete Alarm</button>
+	</div>
+  </div>
 </div>
-<div>
-	Snooze: <input type="checkbox" ng-model="snoozeEnable">
-	Label: <input type="text" name="alarmLabel" ng-model="alarmLabel" value="{{alarmLabel}}">
-</div>
-<div>
-	<ul>
-		<li ng-repeat="day in weekdays">
-			{{day.name}}<input type="checkbox" name="selectedDays[]" ng-model="day.selected" value="{{day.name}}">
-		</li>
-	</ul>
-</div>
-<div>
-	<ul>
-		<li ng-repeat="type in alarmTypes">
-			{{type.name}}<input type="radio" name="alarmTypeSelected" ng-model="$parent.alarmTypeSelected" value="{{type.name}}" >
-		</li>
-	</ul>
-</div>
-<button ng-click="saveAlarm()">Save</button>
-<button ng-click="deleteAlarm()" ng-if="editFlag">Delete</button>
