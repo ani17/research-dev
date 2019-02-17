@@ -17,10 +17,12 @@ import SearchPage from './components/SearchPage';
 import DatePickerScreen from './screens/DatePickerScreen';
 import Demo from './screens/Demo';
 import TwitterHeader from './screens/TwitterHeader';
+import Animations from './screens/Animations';
+import FlipCard from './screens/FlipCard';
 
 const AppTabNavigator = createBottomTabNavigator({
 	Home: {
-    screen: TwitterHeader,
+    screen: FlipCard,
     navigationOptions: {
       tabBarLabel: 'HOME',
       tabBarIcon: () => (
